@@ -11,7 +11,6 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
-//@Audited
 public class PostEntity{
 
     @Id
@@ -19,6 +18,10 @@ public class PostEntity{
     private Long id;
     private String title;
     private String description;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @PrePersist
     void beforeSave() {
