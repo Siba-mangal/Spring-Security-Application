@@ -13,4 +13,6 @@ public class PostDTO {
     private String description;
     private Long userId;
     private String userName;
+
+    private UserDto author;
 }

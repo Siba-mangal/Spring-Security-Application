@@ -18,10 +18,13 @@ public class PostEntity{
     private Long id;
     private String title;
     private String description;
+
+    @ManyToOne
+    private User author;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
     @PrePersist
     void beforeSave() {
