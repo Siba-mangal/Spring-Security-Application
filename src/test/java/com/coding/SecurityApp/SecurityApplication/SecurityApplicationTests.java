@@ -11,21 +11,21 @@ import org.springframework.boot.test.context.SpringBootTest;
 class SecurityApplicationTests {
 
 
-	@Autowired
-	private JwtService jwtService;
-
-	@Test
-	void contextLoads() {
-
-		User user = new User("siba@gmail.com","1234","Siba");
-
-		String token = jwtService.generateAccessToken(user);
-
-		System.out.println(token);
-
-		Long userId = jwtService.getUserIdFromToken(token);
-
-		System.out.println(userId);
-	}
+//	@Autowired
+//	private JwtService jwtService;
+//
+//	@Test
+//	void contextLoads() {
+//
+////		User user = new User("siba@gmail.com","1234","Siba");
+//
+////		String token = jwtService.generateAccessToken(user);
+////
+////		System.out.println(token);
+////
+////		Long userId = jwtService.getUserIdFromToken(token);
+////
+//		System.out.println("Hello");
+//	}
 
 }

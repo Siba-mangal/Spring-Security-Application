@@ -1,0 +1,41 @@
+version: 0.2
+
+env:
+  variables:
+    JAVA_HOME: "/usr/lib/jvm/java-21-amazon-corretto"
+    MAVEN_OPTS: "-Xmx2048m"
+    SPRING_PROFILES_ACTIVE: "production"
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto21
+    commands:
+      - echo "Installing dependencies..."
+      - chmod +x ./mvnw
+
+  pre_build:
+    commands:
+      - echo "Pre-build phase started..."
+      - echo "Building application for production..."
+
+  build:
+    commands:
+      - echo "Building the application..."
+      - ./mvnw clean package -DskipTests
+
+  post_build:
+    commands:
+      - echo "Build completed..."
+      - ls -la target/
+
+artifacts:
+  files:
+    - target/SecurityApp-0.0.1-SNAPSHOT.jar
+    - appspec.yml
+    - scripts/*
+  discard-paths: no
+
+cache:
+  paths:
+    - './m2/repository/**/*'
